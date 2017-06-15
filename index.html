@@ -7,40 +7,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <title></title>
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <title>Cool </title>
   </head>
   <body>
 
     <h1>Checa nuestros temas</h1>
-    <div class="row container">
-  <div class="col-lg-6">
-    <div class="input-group">
-      <div class="input-group-btn">
-        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Crear Post<span class="caret"></span></button>
-        <ul class="dropdown-menu">
-          <li><div class="input-group">
-            <span class="input-group-addon" id="basic-addon1">Tema</span>
-            <input type="text" class="form-control"  aria-describedby="basic-addon1">
-            </div></li>
-          <li><div class="input-group">
-            <span class="input-group-addon" id="basic-addon1">usuario</span>
-            <input type="text" class="form-control" aria-describedby="basic-addon1">
-            </div></li>
-          <li role="separator" class="divider"></li>
-          <li><a href="#">Enviar</a></li>
-        </ul>
-      </div><!-- /btn-group -->
-    </div><!-- /input-group -->
-  </div>
+  <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">
+  Agregar Topic
+</button>
+
   <div class="input-group">
-  <input type="text" class="form-control"  aria-describedby="basic-addon2">
-  <span class="input-group-addon" id="basic-addon"><span class="glyphicon glyphicon-search"></span> Busca un Tema</span>
+  <input id="search" type="text" class="form-control"  aria-describedby="basic-addon2">
+  <span class="input-group-addon" id="buscar"><span class="glyphicon glyphicon-search"></span> Busca un Tema</span>
 </div>
-<!-- /.col-lg-6 -->
-  <div class="container">
-         <div id="temas"></div>
-        
+
+     <div class="container">
+         <div id="temas"></div>  
       </div>
+      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <form id="add-topic">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Nuevo Topic</h4>
+      </div>
+      <div class="modal-body">
+        <form class="form-inline">
+  <div class="form-group">
+    <label for="exampleInputName2">Name</label>
+    <input type="text" class="form-control" id="autor" placeholder="Nombre">
+  </div>
+        <label for="exampleInputName2">Mesaje</label>
+        <textarea id="tema" class="form-control" rows="3"></textarea>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+    </form>
+  </div>
+</div>
+<div class="busqueda"></div>
+
+
     
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
