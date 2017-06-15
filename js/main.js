@@ -6,8 +6,11 @@ var $div = $("#temas");
 var cargarPagina = function (){
   cargarTopics();
   $("#add-topic").submit(agregarTema);
-  $("#buscar").click(filtrarResultados);	
+  $("#buscar").click(filtrarResultados);
+  $(document).on("click",".redirigir",redirigirP);	
 }
+
+
  var cargarTopics= function (){
    $.getJSON(api.url, function(topics){
      topics.forEach(crearTopics);
@@ -18,15 +21,18 @@ var cargarPagina = function (){
 var crearTopics = function(topic){
 	var autor = topic.author_name;
   var tema = topic.content;
+  var id = topic.id;
   var respuesta = topic.responses_count;
   var $tema = $("<div />");
   var $h3= $("<h3 />");
+  var $a=$("<a />");
   var $p = $("<p />");
   var $span = $("<span />");
   
-      $h3.text(tema);
+      $a.text(tema);
       $p.text(autor);
       $span.text(respuesta);
+      $h3.append($a);
       $tema.append($h3);
       $tema.append($p);
       $tema.append($span);
@@ -34,6 +40,8 @@ var crearTopics = function(topic){
       $tema.addClass("panel panel-info");
       $h3.addClass("panel-heading");
       $span.addClass("badge");
+      $a.addClass("redirigir");
+      $a.attr("id",id)
  };
 
 var agregarTema = function(e){
@@ -52,7 +60,7 @@ var agregarTema = function(e){
         '<div class=" container ">' +
           '<div class="row panel panel-info">' +
             '<div class="col-lg-9">' +
-              '<h4 class="panel-heading">__tema__ </h4> '+
+              '<h4 class=" tema panel-heading">__tema__ </h4> '+
             '</div>' +
             '<div class="col-lg-9">' +
               '<p class="autor">__autor__</hp>' +
@@ -85,6 +93,15 @@ var mostrarResultados = function (topicFiltrado) {
     console.log(topic.content);
 });
 }
+ 
+ var redirigirP = function(e){
+  var $a= $("a").attr("href");
+  e.preventDefault();
+  var $this= $(this).attr("id");
+  var topic_id = $this;
+  $a.attr("href","verTopic.html?"+"topic_id");
+  console.log($this);
+ };
 
   
 
